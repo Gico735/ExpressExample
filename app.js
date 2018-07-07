@@ -1,8 +1,14 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
+const fs = require('fs')
+
+const index = fs.readFileSync('index.html')
+console.log(index)
+
+app.set('view engine', 'jade');
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
 
 app.listen(3000, function () {
